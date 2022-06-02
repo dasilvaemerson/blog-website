@@ -21,11 +21,26 @@ app.use(express.static("public"));
 //   res.render ("Page you want to render", {key: value}) → variables that you want to transfer from here to the page using EJS
 // });
 
+
 app.get("/", function(req, res){
-  res.render("home", {startingContent: homeStartingContent});
+  // Renders the Home page
+  res.render("home", {homeStartingContent: homeStartingContent});
 
   
 });
+
+app.get("/about", function(req, res){
+  // Renders the About page
+  res.render("about", {aboutContent: aboutContent});
+});
+
+
+app.get("/contact", function(req, res){
+  // Renders the Contact page
+  res.render("contact", {contactContent: contactContent});
+});
+
+
 
 
 
