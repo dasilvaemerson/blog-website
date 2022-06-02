@@ -18,11 +18,13 @@ app.use(express.static("public"));
 
 // ****RENDER A PAGE****
 // app.get("Page", function(req, res){
-//   res.render ("Page you want to render")
+//   res.render ("Page you want to render", {key: value}) → variables that you want to transfer from here to the page using EJS
 // });
 
 app.get("/", function(req, res){
-  res.render("home");
+  res.render("home", {startingContent: homeStartingContent});
+
+  
 });
 
 
