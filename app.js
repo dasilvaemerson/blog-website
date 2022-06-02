@@ -40,6 +40,18 @@ app.get("/contact", function(req, res){
   res.render("contact", {contactContent: contactContent});
 });
 
+app.get("/compose", function(req, res){
+  // Renders the compose page
+  res.render("compose");
+});
+
+app.post("/compose", function(req, res){
+  // Reads the information posted on the form from "compose.ejs"
+  // req.body belongs to bodyParser
+  // postTitle is the name of the Input Field in "compose.ejs"
+  console.log(req.body.postTitle); 
+}); 
+
 
 
 
