@@ -58,10 +58,14 @@ app.get("/posts/:postName", function(req, res){
 
   posts.forEach(function(post){
     const storedTitle = post.title.split(" ").join("-").toLowerCase();
-    // post.title.replace(' ', '-').toLowerCase();
 
     if (storedTitle === requestedTitle) {
-      console.log("Match Found!!!");
+      // Renders post.ejs with the values of the requested title and its content
+      res.render("post", {
+        title: post.title,
+        content: post.content
+      });
+
     };
   });
 });
