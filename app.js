@@ -15,16 +15,23 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+// **** JavaScript Objects ****
+let posts = [];
+
 
 // ****RENDER A PAGE****
 // app.get("Page", function(req, res){
 //   res.render ("Page you want to render", {key: value}) → variables that you want to transfer from here to the page using EJS
-// });
+// }); 
+
 
 
 app.get("/", function(req, res){
   // Renders the Home page
-  res.render("home", {homeStartingContent: homeStartingContent});
+  res.render("home", {
+    homeStartingContent: homeStartingContent, 
+    posts: posts
+  });
 
   
 });
@@ -48,18 +55,19 @@ app.get("/compose", function(req, res){
 app.post("/compose", function(req, res){
   // Reads the information posted on the form from "compose.ejs"
   // req.body belongs to bodyParser
-  // postTitle is the name of the Input Field in "compose.ejs"
-  console.log(req.body.postTitle); 
+
+  // Creates a JavaScript Object to store the posts created with the form
+    // postTitle and postContet are the names of the Input Field in "compose.ejs"
+  const post = {
+    title: req.body.postTitle,
+    content: req.body.postContent
+  };
+
+  posts.push(post);
+
+  res.redirect("/");
+  
 }); 
-
-
-
-
-
-
-
-
-
 
 
 
