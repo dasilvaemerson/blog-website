@@ -52,6 +52,20 @@ app.get("/compose", function(req, res){
   res.render("compose");
 });
 
+app.get("/posts/:postName", function(req, res){
+  // Checks if the post name in the URL matches one of the posts that were created
+  const requestedTitle = req.params.postName.toLowerCase();
+
+  posts.forEach(function(post){
+    const storedTitle = post.title.split(" ").join("-").toLowerCase();
+    // post.title.replace(' ', '-').toLowerCase();
+
+    if (storedTitle === requestedTitle) {
+      console.log("Match Found!!!");
+    };
+  });
+});
+
 app.post("/compose", function(req, res){
   // Reads the information posted on the form from "compose.ejs"
   // req.body belongs to bodyParser
