@@ -2,17 +2,12 @@
 <h1>Home</h1>
 <p><%= homeStartingContent %></p>
 
-
-
-<% posts.forEach(function(post) { %>
-    <% console.log(post.title); %>
+<!-- Generates the posts created on the Compose Page -->
+<% posts.forEach(function(post) { %> 
     <h1><%= post.title %></h1>
     <p><%= post.content.substring(0, 100) + ' ...' %></p> <!-- Only keep the first 100 characters -->
     <a href="/posts/<%=post.title.split(" ").join("-").toLowerCase()%>">Read More</a>
 <% }); %>
-
-
-<!-- hello -->
 
 
 <%- include("partials/footer"); -%>
