@@ -8,6 +8,7 @@
     <% console.log(post.title); %>
     <h1><%= post.title %></h1>
     <p><%= post.content.substring(0, 100) + ' ...' %></p> <!-- Only keep the first 100 characters -->
+    <a href="/posts/<%=post.title.split(" ").join("-").toLowerCase()%>">Read More</a>
 <% }); %>
 
 
